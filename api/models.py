@@ -30,6 +30,68 @@ class UserBlog(models.Model):
         default=WORDPRESS,
     )
     blog_url = models.URLField(max_length=200, blank = False)
-
+    username = models.CharField(max_length=50, blank = True)
+    password = models.CharField(max_length=16, blank = True)
     def __str__(self):
         return self.blog_url
+
+
+class FacebookReport(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    pageName = models.CharField(max_length = 250)
+    likes = models.IntegerField(default = 0)
+    followers = models.IntegerField(default = 0)
+    maleUsers = models.IntegerField(default = 0)
+    femaleUsers = models.IntegerField(default = 0)
+    totalPosts = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.pageName
+
+
+
+
+
+class TwitterReport(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    pageName = models.CharField(max_length = 250)
+    following = models.IntegerField(default = 0)
+    followers = models.IntegerField(default = 0)
+    maleUsers = models.IntegerField(default = 0)
+    femaleUsers = models.IntegerField(default = 0)
+    totalTweets = models.IntegerField(default = 0)
+    sentimentTweets = models.TextField(blank = True)
+    sentimentReplies = models.TextField(blank = True)
+    loaction = models.CharField(max_length = 250, blank = True)
+
+
+    def __str__(self):
+        return self.pageName
+
+class TumblrReport(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    pageName = models.CharField(max_length = 250)
+    likes = models.IntegerField(default = 0)
+    followers = models.IntegerField(default = 0)
+    maleUsers = models.IntegerField(default = 0)
+    femaleUsers = models.IntegerField(default = 0)
+    totalPosts = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.pageName
+
+class WordpressReport(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    blogName = models.CharField(max_length = 250)
+    keywords = models.TextField(max_length = 400, blank = True)
+    sentimentPosts = models.TextField(blank = True)
+    sentimentComments = models.TextField(blank = True)
+    totalPosts = models.IntegerField(default = 0)
+    totalAuthors = models.IntegerField(default = 0)
+    newPosts = models.IntegerField(default = 0)
+    newComments = models.IntegerField(default = 0)
+    totalComments = models.IntegerField(default = 0)
+    avgPostLength = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.blogName

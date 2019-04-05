@@ -25,7 +25,10 @@ SECRET_KEY = 'mvyxddpco-8i$pzl-_e31p$3ygxxy4tbj^7frvn*k5n@91arn%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1',
+    'therivalinsight.com',
+    'www.therivalinsight.com',
+    '3.16.215.24']
 
 
 # Application definition
@@ -50,7 +53,6 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'social_django',
     'rest_framework_social_oauth2',
-
 ]
 
 SITE_ID = 1
@@ -131,8 +133,8 @@ REST_FRAMEWORK = {
     #     'rest_framework.permissions.IsAdminUser',
      ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'rest_framework_social_oauth2.authentication.SocialAuthentication',
@@ -147,6 +149,11 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost:80',
     '127.0.0.1:4200',
+    'therivalinsight.com',
+    'www.therivalinsight.com',
+    'https://app.therivalinsight.com',
+    'https://www.app.therivalinsight.com',
+    '3.16.215.24'
 )
 CORS_ALLOW_METHODS = (
     'DELETE',
