@@ -95,3 +95,57 @@ class WordpressReport(models.Model):
 
     def __str__(self):
         return self.blogName
+
+
+
+### trending Content of competitors:
+class FacebookTrending(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    content = models.TextField(max_length = 500, blank = True)
+    topics = models.CharField(max_length = 100,blank = True)
+    engagement = models.CharField(max_length = 10,blank = True)
+    trendingScore = models.CharField(max_length = 10,blank = True)
+    source = models.CharField(max_length = 50,blank = False)
+    sentiment = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.source
+
+
+class TwitterTrending(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    content = models.TextField(max_length = 200, blank = True)
+    topics = models.CharField(max_length = 100,blank = True)
+    engagement = models.CharField(max_length = 10,blank = True)
+    trendingScore = models.CharField(max_length = 10,blank = True)
+    source = models.CharField(max_length = 50,blank = False)
+    sentiment = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.source
+
+
+class TumblrTrending(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    content = models.TextField(max_length = 200, blank = True)
+    topics = models.CharField(max_length = 100,blank = True)
+    engagement = models.CharField(max_length = 10,blank = True)
+    trendingScore = models.CharField(max_length = 10,blank = True)
+    source = models.CharField(max_length = 50,blank = False)
+    sentiment = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.source
+
+
+class NewsTrending(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    heading = models.CharField(max_length = 250)
+    content = models.TextField(max_length = 800, blank = True)
+    topics = models.CharField(max_length = 100,blank = True)
+    source = models.CharField(max_length = 50,blank = False)
+    imageUrl = models.CharField(max_length = 250, blank = True)
+    sentiment = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.source

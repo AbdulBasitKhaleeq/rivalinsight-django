@@ -13,9 +13,15 @@ from .serializers import UserSerializer
 router = DefaultRouter()
 router.register('user-blog', BlogViewSet, base_name='user-blog')
 router.register('user-detail', DetailViewSet, base_name='user-detail')
+
 router.register('facebookreport', FacebookReportViewSet, base_name='facebookreport')
 router.register('twitterreport', TwitterReportViewSet, base_name='twitterreport')
 router.register('wordpressreport', WordpressReportViewSet, base_name='wordpressreport')
+
+router.register('facebooktrending', FacebookTrendingViewSet, base_name='facebooktrending')
+router.register('twittertrending', TwitterTrendingViewSet, base_name='twittertrending')
+router.register('tumblrtrending', TumblrTrendingViewSet, base_name='tumblrtrending')
+router.register('newstrending', NewsTrendingViewSet, base_name='newstrending')
 
 
 urlpatterns = [

@@ -37,3 +37,30 @@ class WordpressReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = WordpressReport
         fields = '__all__'
+
+
+
+
+
+### ---------------- Handled Trending and competitors --------
+
+class FacebookTrendingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FacebookTrending
+        fields = '__all__'
+
+
+class TwitterTrendingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TwitterTrending
+        fields = '__all__'
+
+class TumblrTrendingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TumblrTrending
+        fields = '__all__'
+
+class NewsTrendingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsTrending
+        fields = '__all__'
