@@ -44,6 +44,8 @@ class FacebookReport(models.Model):
     maleUsers = models.IntegerField(default = 0)
     femaleUsers = models.IntegerField(default = 0)
     totalPosts = models.IntegerField(default = 0)
+    sentimentPosts = models.TextField(blank = True)
+    sentimentComments = models.TextField(blank = True)
 
     def __str__(self):
         return self.pageName
@@ -62,6 +64,7 @@ class TwitterReport(models.Model):
     totalTweets = models.IntegerField(default = 0)
     sentimentTweets = models.TextField(blank = True)
     sentimentReplies = models.TextField(blank = True)
+    keywords = models.TextField(max_length = 400, blank = True)
     loaction = models.CharField(max_length = 250, blank = True)
 
 
@@ -71,11 +74,14 @@ class TwitterReport(models.Model):
 class TumblrReport(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     pageName = models.CharField(max_length = 250)
+    keywords = models.TextField(max_length = 400, blank = True)
     likes = models.IntegerField(default = 0)
     followers = models.IntegerField(default = 0)
     maleUsers = models.IntegerField(default = 0)
     femaleUsers = models.IntegerField(default = 0)
     totalPosts = models.IntegerField(default = 0)
+    sentimentPosts = models.TextField(blank = True)
+    sentimentComments = models.TextField(blank = True)
 
     def __str__(self):
         return self.pageName
